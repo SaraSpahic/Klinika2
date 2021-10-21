@@ -31,11 +31,6 @@ namespace Klinika2.Controllers
             }
 
             return View(await ljekari.ToListAsync());
-
-
-
-
-            return View(await _context.Ljekar.ToListAsync());
         }
 
         // GET: Ljekars/Details/5
