@@ -23,7 +23,7 @@ namespace Klinika2.Models
         public PatientGenderEnum Spol { get; set; }
         public string Adresa { get; set; }
 
-        public List<Prijem> Prijemi { get; set; }
+        public ICollection<Prijem> Prijemi { get; set; }
 
     }
 }

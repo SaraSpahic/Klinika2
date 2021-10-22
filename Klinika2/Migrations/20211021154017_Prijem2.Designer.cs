@@ -4,14 +4,16 @@ using Klinika2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Klinika2.Migrations
 {
     [DbContext(typeof(Klinika2Context))]
-    partial class Klinika2ContextModelSnapshot : ModelSnapshot
+    [Migration("20211021154017_Prijem2")]
+    partial class Prijem2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,22 +48,6 @@ namespace Klinika2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ljekar");
-                });
-
-            modelBuilder.Entity("Klinika2.Models.Nalaz", b =>
-                {
-                    b.Property<int>("PrijemID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DatumVrijeme")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Opis")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PrijemID");
-
-                    b.ToTable("Nalaz");
                 });
 
             modelBuilder.Entity("Klinika2.Models.Patients", b =>
@@ -118,15 +104,6 @@ namespace Klinika2.Migrations
                     b.ToTable("Prijem");
                 });
 
-            modelBuilder.Entity("Klinika2.Models.Nalaz", b =>
-                {
-                    b.HasOne("Klinika2.Models.Prijem", null)
-                        .WithOne("Nalaz")
-                        .HasForeignKey("Klinika2.Models.Nalaz", "PrijemID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Klinika2.Models.Prijem", b =>
                 {
                     b.HasOne("Klinika2.Models.Ljekar", "Ljekar")
@@ -150,11 +127,6 @@ namespace Klinika2.Migrations
             modelBuilder.Entity("Klinika2.Models.Patients", b =>
                 {
                     b.Navigation("Prijemi");
-                });
-
-            modelBuilder.Entity("Klinika2.Models.Prijem", b =>
-                {
-                    b.Navigation("Nalaz");
                 });
 #pragma warning restore 612, 618
         }

@@ -57,6 +57,9 @@ namespace Klinika2.Controllers
             }
 
             var patients = await _context.Patients
+                .Include(s => s.Prijemi)
+                .ThenInclude(e => e.Ljekar)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (patients == null)
             {

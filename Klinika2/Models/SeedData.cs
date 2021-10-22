@@ -30,7 +30,7 @@ namespace Klinika2.Models
                         DatumRodjenja = DateTime.Parse("1989-2-12"),
                         Spol = PatientGenderEnum.Muski,
                         Adresa = "Zije Dizdarevica",
-                        
+
                     },
 
                     new Patients
@@ -57,7 +57,36 @@ namespace Klinika2.Models
                         Spol = PatientGenderEnum.Nepoznato,
                         Adresa = "Zmaja od Bosne 6",
                     }
-                );; ;
+                );
+
+                context.Ljekar.AddRange(
+                  new Ljekar
+                  {
+                      Ime = "Harry",
+                      Prezime = "Harrison",
+                      Titula = LjekarTitulaEnum.Specijalista,
+                      Sifra = "123",
+                  },
+
+                  new Ljekar
+                  {
+                      Ime = "Marry",
+                      Prezime = "Harrison",
+                      Titula = LjekarTitulaEnum.MedicinskaSestra,
+                      Sifra = "133",
+                  });
+
+                context.SaveChanges();
+
+                context.Prijem.AddRange(
+                    new Prijem
+                    {
+                        DatumVrijeme = new DateTime(2021, 6, 1, 7, 47, 0),
+                     //   Pacijent
+                     //   Ljekar
+                        Hitno = false,
+                    });
+
                 context.SaveChanges();
             }
         }

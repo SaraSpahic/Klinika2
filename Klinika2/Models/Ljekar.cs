@@ -22,7 +22,7 @@ namespace Klinika2.Models
         [Required]
         public string Sifra { get; set; }
 
-        public List<Prijem> Prijemi { get; set; }
+        public ICollection<Prijem> Prijemi { get; set; }
 
     }
 }
