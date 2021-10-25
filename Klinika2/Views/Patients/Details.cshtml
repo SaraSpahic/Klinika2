@@ -48,6 +48,7 @@
                 <tr>
                     <th>Prijem</th>
                     <th>Ljekar</th>
+                    <th>Details</th>
                 </tr>
                 @foreach (var item in Model.Prijemi)
                 {
@@ -58,6 +59,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Ljekar.Prezime)
                 </td>
+                <td>
+                    <a asp-controller="Prijems" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+                
             </tr>
                 }
             </table>
@@ -68,6 +73,7 @@
     </dl>
 </div>
 <div>
+    <a asp-controller="Prijems" asp-action="Create" asp-route-pacijentid ="@Model.Id" >Kreiraj Prijem</a> |
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

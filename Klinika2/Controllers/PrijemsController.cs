@@ -65,9 +65,16 @@ namespace Klinika2.Controllers
         }
 
         // GET: Prijems/Create
-        public IActionResult Create()
+        public IActionResult Create(int? pacijentid)
         {
-            PopulateDropDownLists();
+            if (pacijentid == null)
+            {
+                PopulateDropDownLists();
+            }
+            else
+            {
+                PopulateDropDownLists(null, pacijentid);
+            }
             return View();
         }
 

@@ -11,6 +11,7 @@ namespace Klinika2.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Ime i Prezime")]
         [StringLength(100, MinimumLength = 3), Required]
         public string ImePrezime { get; set; }
 
@@ -23,8 +24,8 @@ namespace Klinika2.Models
 
         public string Adresa { get; set; }
 
-        [RegularExpression("^[0-9]{4,10}$",
-        ErrorMessage = "Molimo unesite samo brojeve")]
+        // [RegularExpression("^[0-9]{4,10}$",
+        [Phone(ErrorMessage = "Molimo unesite validan broj telefona")]
         public string BrojTelefona { get; set; }
 
         public ICollection<Prijem> Prijemi { get; set; }
