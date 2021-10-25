@@ -18,5 +18,9 @@ namespace Klinika2.Models
         public bool Hitno { get; set; }
 
         public Nalaz Nalaz { get; set; }
+
+        public int LjekarId { get; set; }
+
+        public int PacijentId { get; set; }
     }
 }
