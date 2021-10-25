@@ -19,5 +19,7 @@ namespace Klinika2.Data
         public DbSet<Klinika2.Models.Ljekar> Ljekar { get; set; }
 
         public DbSet<Klinika2.Models.Prijem> Prijem { get; set; }
+
+        public DbSet<Klinika2.Models.Nalaz> Nalaz { get; set; }
     }
 }
