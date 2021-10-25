@@ -24,7 +24,7 @@ namespace Klinika2.Models
 
         public string Adresa { get; set; }
 
-        // [RegularExpression("^[0-9]{4,10}$",
+        [Display(Name = "Broj Telefona")]
         [Phone(ErrorMessage = "Molimo unesite validan broj telefona")]
         public string BrojTelefona { get; set; }
 

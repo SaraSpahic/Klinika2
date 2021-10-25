@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace Klinika2.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Datum i vrijeme")]
         public DateTime DatumVrijeme { get; set; }
 
 
