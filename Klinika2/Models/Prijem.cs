@@ -11,6 +11,7 @@ namespace Klinika2.Models
 
         public DateTime DatumVrijeme { get; set; }
 
+
         public Patients Pacijent { get; set; }
 
         public Ljekar Ljekar { get; set; }
@@ -18,5 +19,9 @@ namespace Klinika2.Models
         public bool Hitno { get; set; }
 
         public Nalaz Nalaz { get; set; }
+
+        public int LjekarId { get; set; }
+
+        public int PacijentId { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace Klinika2.Controllers
             _context = context;
         }
 
+
         // GET: Prijems
         public async Task<IActionResult> Index()
         {
@@ -34,6 +35,9 @@ namespace Klinika2.Controllers
             }
 
             var prijem = await _context.Prijem
+                .Include(c => c.Ljekar)
+                .Include(c => c.Pacijent)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (prijem == null)
             {
@@ -43,9 +47,23 @@ namespace Klinika2.Controllers
             return View(prijem);
         }
 
+        private void PopulateDropDownLists(object selectedLjekar = null, object selectedPacijent = null)
+        {
+            var ljekariQuery = from l in _context.Ljekar
+                                   orderby l.Prezime
+                                   select l;
+            ViewBag.Ljekari = new SelectList(ljekariQuery.AsNoTracking(), "Id", "Prezime", selectedLjekar);
+
+            var pacijentiQuery = from p in _context.Patients
+                                    orderby p.ImePrezime
+                                    select p;
+            ViewBag.Pacijenti = new SelectList(pacijentiQuery.AsNoTracking(), "Id", "ImePrezime", selectedPacijent);
+        }
+
         // GET: Prijems/Create
         public IActionResult Create()
         {
+            PopulateDropDownLists();
             return View();
         }
 
@@ -54,7 +72,7 @@ namespace Klinika2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DatumVrijeme,Hitno")] Prijem prijem)
+        public async Task<IActionResult> Create([Bind("Id,DatumVrijeme,LjekarId,PacijentId,Hitno")] Prijem prijem)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +80,7 @@ namespace Klinika2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            PopulateDropDownLists(prijem.LjekarId, prijem.PacijentId);
             return View(prijem);
         }
 
@@ -125,6 +144,9 @@ namespace Klinika2.Controllers
             }
 
             var prijem = await _context.Prijem
+                .Include(c => c.Ljekar)
+                .Include(c => c.Pacijent)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (prijem == null)
             {
