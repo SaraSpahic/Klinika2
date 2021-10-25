@@ -80,7 +80,7 @@ namespace Klinika2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ImePrezime,DatumRodjenja,Spol,Adresa")] Patients patients)
+        public async Task<IActionResult> Create([Bind("Id,ImePrezime,DatumRodjenja,Spol,Adresa,BrojTelefona")] Patients patients)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace Klinika2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ImePrezime,DatumRodjenja,Spol,Adresa")] Patients patients)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ImePrezime,DatumRodjenja,Spol,Adresa,BrojTelefona")] Patients patients)
         {
             if (id != patients.Id)
             {

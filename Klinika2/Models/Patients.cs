@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Klinika2.Models
 
-
 {
     public class Patients
     {
@@ -21,9 +20,15 @@ namespace Klinika2.Models
         
         [Required]
         public PatientGenderEnum Spol { get; set; }
+
         public string Adresa { get; set; }
 
+        [RegularExpression("^[0-9]{4,10}$",
+        ErrorMessage = "Molimo unesite samo brojeve")]
+        public string BrojTelefona { get; set; }
+
         public ICollection<Prijem> Prijemi { get; set; }
+
 
     }
 }

@@ -34,7 +34,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Adresa)
         </dd>
-
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BrojTelefona)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BrojTelefona)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Prijemi)
         </dt>
@@ -46,14 +51,14 @@
                 </tr>
                 @foreach (var item in Model.Prijemi)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DatumVrijeme)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ljekar.Prezime)
-                        </td>
-                    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumVrijeme)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ljekar.Prezime)
+                </td>
+            </tr>
                 }
             </table>
         </dd>
