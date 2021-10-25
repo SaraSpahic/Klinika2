@@ -4,14 +4,16 @@ using Klinika2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Klinika2.Migrations
 {
     [DbContext(typeof(Klinika2Context))]
-    partial class Klinika2ContextModelSnapshot : ModelSnapshot
+    [Migration("20211025191517_Broj-Telefona")]
+    partial class BrojTelefona
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

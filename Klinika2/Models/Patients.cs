@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Klinika2.Models
 
-
 {
     public class Patients
     {
         public int Id { get; set; }
 
+        [Display(Name = "Ime i Prezime")]
         [StringLength(100, MinimumLength = 3), Required]
         public string ImePrezime { get; set; }
 
@@ -21,9 +21,15 @@ namespace Klinika2.Models
         
         [Required]
         public PatientGenderEnum Spol { get; set; }
+
         public string Adresa { get; set; }
 
+        // [RegularExpression("^[0-9]{4,10}$",
+        [Phone(ErrorMessage = "Molimo unesite validan broj telefona")]
+        public string BrojTelefona { get; set; }
+
         public ICollection<Prijem> Prijemi { get; set; }
+
 
     }
 }

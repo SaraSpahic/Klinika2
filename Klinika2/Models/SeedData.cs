@@ -30,7 +30,7 @@ namespace Klinika2.Models
                         DatumRodjenja = DateTime.Parse("1989-2-12"),
                         Spol = PatientGenderEnum.Muski,
                         Adresa = "Zije Dizdarevica",
-
+                        BrojTelefona = "38762839222"
                     },
 
                     new Patients
@@ -48,6 +48,7 @@ namespace Klinika2.Models
                         DatumRodjenja = DateTime.Parse("1986-2-23"),
                         Spol = PatientGenderEnum.Zenski,
                         Adresa = "Stupska 12 B",
+                        BrojTelefona = "00000000"
                     },
 
                     new Patients

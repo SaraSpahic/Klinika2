@@ -23,7 +23,11 @@ namespace Klinika2.Controllers
         // GET: Prijems
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Prijem.ToListAsync());
+            return View(await _context.Prijem
+                .Include(c => c.Ljekar)
+                .Include(c => c.Pacijent)
+                .AsNoTracking()
+                .ToListAsync());
         }
 
         // GET: Prijems/Details/5
@@ -61,9 +65,16 @@ namespace Klinika2.Controllers
         }
 
         // GET: Prijems/Create
-        public IActionResult Create()
+        public IActionResult Create(int? pacijentid)
         {
-            PopulateDropDownLists();
+            if (pacijentid == null)
+            {
+                PopulateDropDownLists();
+            }
+            else
+            {
+                PopulateDropDownLists(null, pacijentid);
+            }
             return View();
         }
 
