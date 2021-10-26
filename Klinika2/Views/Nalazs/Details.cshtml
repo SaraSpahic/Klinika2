@@ -1,0 +1,42 @@
+﻿@model Klinika2.Models.Nalaz
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Nalaz</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumVrijeme)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatumVrijeme)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prijem.Ljekar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prijem.Ljekar.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prijem.Pacijent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prijem.Pacijent.ImePrezime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PrijemID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

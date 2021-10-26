@@ -11,10 +11,15 @@ namespace Klinika2.Models
        // public int Id { get; set; }
 
         [Key]
+        [Display(Name = "Prijem")]
         public int PrijemID { get; set; }
 
+        [Required]
         public string Opis { get; set; }
 
+        [Display(Name ="Vrijeme kreiranja")]
         public DateTime DatumVrijeme { get; set; }
+
+        public Prijem Prijem { get; set; }
     }
 }
