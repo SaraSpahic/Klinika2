@@ -41,6 +41,7 @@ namespace Klinika2.Controllers
             var prijem = await _context.Prijem
                 .Include(c => c.Ljekar)
                 .Include(c => c.Pacijent)
+                .Include(c => c.Nalaz)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (prijem == null)

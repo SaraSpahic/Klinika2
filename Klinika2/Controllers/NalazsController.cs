@@ -51,9 +51,17 @@ namespace Klinika2.Controllers
         }
 
         // GET: Nalazs/Create
-        public IActionResult Create()
+        public IActionResult Create(int? prijemid)
         {
-            PopulatePrijemDropDown();
+            if (prijemid == null)
+            {
+                PopulatePrijemDropDown();
+            }
+            else
+            {
+                PopulatePrijemDropDown(prijemid);
+            }
+           
             return View();
         }
 
@@ -131,6 +139,7 @@ namespace Klinika2.Controllers
         private void PopulatePrijemDropDown(object selectedPrijem = null)
         {
             var prijemiQuery = from p in _context.Prijem
+                                 where p.Nalaz == null  //Prikazuju se samo prijemi koji nemaju nalaza
                                  orderby p.DatumVrijeme
                                  select p;
             ViewBag.Prijemi = new SelectList(prijemiQuery.AsNoTracking(), "Id", "DatumVrijeme", selectedPrijem);

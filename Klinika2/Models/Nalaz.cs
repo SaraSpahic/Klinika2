@@ -11,6 +11,7 @@ namespace Klinika2.Models
        // public int Id { get; set; }
 
         [Key]
+        [Display(Name = "Prijem")]
         public int PrijemID { get; set; }
 
         [Required]

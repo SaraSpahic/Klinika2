@@ -34,6 +34,19 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Hitno)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nalaz)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Nalaz != null)
+            {
+                @Html.DisplayFor(model => model.Nalaz.Opis)
+            }
+            else
+            {
+            <a asp-controller="Nalazs" asp-action="Create" asp-route-prijemid="@Model.Id">Kreiraj Nalaz</a>
+            }
+        </dd>
     </dl>
 </div>
 <div>
