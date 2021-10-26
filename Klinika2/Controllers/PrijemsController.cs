@@ -108,6 +108,7 @@ namespace Klinika2.Controllers
             {
                 return NotFound();
             }
+            PopulateDropDownLists(prijem.LjekarId, prijem.PacijentId);
             return View(prijem);
         }
 
@@ -116,7 +117,7 @@ namespace Klinika2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DatumVrijeme,Hitno")] Prijem prijem)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DatumVrijeme,LjekarId,PacijentId,Hitno")] Prijem prijem)
         {
             if (id != prijem.Id)
             {
@@ -143,6 +144,7 @@ namespace Klinika2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            PopulateDropDownLists(prijem.LjekarId, prijem.PacijentId);
             return View(prijem);
         }
 
